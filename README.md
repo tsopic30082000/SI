@@ -1,4 +1,4 @@
-## How to run SQL server with docker
+## How to run SQL server with docker / How to run backend project
 
 1. Run docker
 
@@ -11,6 +11,16 @@
 4. Create new DB (name: SI)
 
 5. Run SQL script to create tables
+
+6. Change DB string in application.properties: spring.datasource.url=jdbc:sqlserver://localhost;databaseName=SI;integratedSecurity=false;user=sa;password=NewPassword123!;encrypt=false;
+
+7. ```bash
+   mvn clean install
+   ```
+   
+8. ```bash
+   java -jar target/projekt-0.0.1-SNAPSHOT.jar
+   ```
 
 
 

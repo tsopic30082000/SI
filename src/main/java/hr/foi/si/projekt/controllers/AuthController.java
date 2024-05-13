@@ -3,10 +3,13 @@ package hr.foi.si.projekt.controllers;
 import hr.foi.si.projekt.dtos.AuthenticationRequest;
 import hr.foi.si.projekt.dtos.AuthenticationResponse;
 
+import hr.foi.si.projekt.models.User;
 import hr.foi.si.projekt.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -26,4 +29,15 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Login failed: " + e.getMessage());
         }
     }
+    @PostMapping("/login2")
+    public ResponseEntity<?> login2(@RequestBody AuthenticationRequest request) {
+        try {
+
+            List<User> users = authService.login2(request.getEmail(), request.getPassword());
+            return ResponseEntity.ok(users);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Login failed: " + e.getMessage());
+        }
+    }
+
 }

@@ -43,4 +43,11 @@ public class AuthService {
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
     }
 
+    public List<User> login3(String email, String password) {
+        String sql = "SELECT * FROM [user] WHERE email = ? AND password = ?";
+        Object[] params = {email, password};
+        return jdbcTemplate.query(sql, params, new BeanPropertyRowMapper<>(User.class));
+    }
+
+
 }

@@ -39,5 +39,15 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Login failed: " + e.getMessage());
         }
     }
+    @PostMapping("/login3")
+    public ResponseEntity<?> login3(@RequestBody AuthenticationRequest request) {
+        try {
+
+            List<User> users = authService.login3(request.getEmail(), request.getPassword());
+            return ResponseEntity.ok(users);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Login failed: " + e.getMessage());
+        }
+    }
 
 }

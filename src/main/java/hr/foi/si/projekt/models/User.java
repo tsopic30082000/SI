@@ -53,11 +53,19 @@ public class User {
     @Column(name = "user_type")
     private Integer userType;
 
+    @Column(name = "number_of_attempts")
+    private Integer numberOfAttempts = 0;
+
+    @Column(name = "blocked")
+    private Boolean blocked = false;
+
     @PrePersist
     public void onCreate() {
         Date now = new Date();
         this.dateCreated = now;
         this.dateModified = now;
+        this.numberOfAttempts = 0;
+        this.blocked = false;
     }
 
     @PreUpdate
